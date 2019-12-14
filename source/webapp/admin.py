@@ -1,17 +1,15 @@
 from django.contrib import admin
-from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.models import User
-from webapp.models import Foto
-
-class ProfileInline(admin.StackedInline):
-    model = Foto
-    fields =['foto', 'subscribe', 'rating', 'user']
+from webapp.models import Foto, Comments
 
 
-class UserProfileAdmin(UserAdmin):
-    inlines = [ProfileInline]
+class FotoAdmin(admin.ModelAdmin):
+    fields = ('foto', 'subscribe', 'rating', 'user')
 
-admin.site.unregister(User)
-admin.site.register(User, UserProfileAdmin)
-# Register your models here.
+
+class CommentsAdmin(admin.ModelAdmin):
+    model = Comments
+    fields = ('text', 'fotocomment', 'author')
+
+
+admin.site.register(Foto, FotoAdmin)
+admin.site.register(Comments, CommentsAdmin)

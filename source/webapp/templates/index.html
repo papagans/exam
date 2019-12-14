@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}ФОТЫ{% endblock %}
+{% block menu %}
+{#    {% if perms.webapp.add_product %}#}
+{#        <li class="nav-item"><a href="{% url 'webapp:product_create' %}" class="nav-link">Добавить товар</a></li>#}
+{#        {% endif %}#}
+{#    {% if perms.webapp.view_order %}#}
+{#        <li class="nav-item"><a href="{% url 'webapp:order_list' %}" class="nav-link">Заказы</a></li>#}
+{#    {% endif %}#}
+{% endblock %}
+{% block content %}
+    <h1 class="text-center">Фотки</h1>
+    <div class="row">
+        {% for foto in foto_list %}
+            <div class="col col-3">
+                <div class="card">
+                    <img src="{{ foto.foto.url }}" class="card-img-top" alt="{{ foto.subscribe}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ foto.subscribe }}</h5>
+                        <p class="card-text">Автор: {{ foto.user }} </p>
+                        <p class="card-text">Создана: {{ foto.created_at }} </p>
+                        <p class="card-text">Рэйтинг: {{ foto.rating }} </p>
+                        <a href="{% url "webapp:foto_detail" foto.pk %}"
+                           class="btn btn-primary">Посмотреть</a>
+{#                        <a href="{% url 'webapp:basket_change' %}?pk={{ product.pk }}&action=add" class="btn btn-primary mt-2">В корзину</a>#}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

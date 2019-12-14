@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}{{ product.name }}{% endblock %}
+{% block content %}
+    <div class="text-center">
+        <h1>{{ product.name }}</h1>
+        <div class="row">
+            <div class="col col-12 col-sm-10 col-md-8 col-lg-6 m-auto">
+                <img src="{{ foto.foto.url }}" class="img-fluid" alt="{{ foto.subscribe }}">
+            </div>
+        </div>
+        <p><b>Подпись:</b> {{ foto.subscribe }}</p>
+        <p><b>Дата:</b> {{ foto.created_at }} </p>
+        <p><b>Количество лайков:</b> {{ foto.rating }}</p>
+        <p><b>Автор:</b> {{ foto.user }}</p>
+{#        <p><a href="{% url 'webapp:basket_change' %}?pk={{ product.pk }}&action=add&next={% url "webapp:product_detail" product.pk %}" class="btn btn-primary">В корзину</a></p>#}
+        <p><a href="{% url 'webapp:foto_update' foto.pk %}" class="btn btn-primary">Изменить</a></p>
+        <p><a href="{% url 'webapp:foto_delete' foto.pk %}" class="btn btn-danger">Удалить</a></p>
+    </div>
+       <p><h2>Комментарии:</h2> <b>
+       {% for comment in comments %}
+           <p> Автор: {{ comment.author }}</p>
+           <p> Автор: {{ comment.text }}</p>
+           <hr>
+
+{#           (Time joined: {{ team.created_at }}) (Time end: {{ team.end_at }})<br/></p>#}
+        {% endfor %}
+{% endblock %}

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
 class Foto(models.Model):
     foto = models.ImageField(null=False, blank=False, upload_to='user_pics', verbose_name='Фото')
     subscribe = models.CharField(max_length=50, verbose_name='Подпись', null=False, blank=False)
@@ -11,11 +12,12 @@ class Foto(models.Model):
     user = models.ForeignKey(User, related_name='profile', on_delete=models.CASCADE, verbose_name='Пользователь')
 
     def __str__(self):
-        return self.user.get_full_name() + "'s User"
+        return str(self.foto)
 
     class Meta:
-        verbose_name = 'Пользователь'
-        verbose_name_plural = 'Пользователи'
+        verbose_name = 'Фотграфия'
+        verbose_name_plural = 'Фотографии'
+
 
 class Comments(models.Model):
     text = models.TextField(max_length=400, null=True, blank=True, verbose_name='Текст')
