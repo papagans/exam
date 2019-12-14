@@ -68,6 +68,7 @@ function setUpGlobalVars() {
 
 }
 
+
 function rateUp(id) {
     let request = null;
     let token = getCookie('csrftoken');
@@ -98,6 +99,19 @@ function rateDown(id) {
         console.log('Could not rate down quote with id ' + id + '.');
         console.log(response.responseText);
     });
+}
+
+function deleteComment(id){
+    let request =  makeRequest('comments/' + id, 'delete', true);
+    request.done(function(item)
+    {
+        getComment();
+    }
+    ).fail(function(response, status, message){
+        console.log('Коммент не удаляется!');
+        console.log(response.responseText);
+    });
+
 }
 
 function getClicks(id){

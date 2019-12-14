@@ -15,17 +15,20 @@
 {#        <p><b>Количество лайков:</b> {{ foto.rating }}</p>#}
         <div class="container" id="buttons"></div>
         <p><b>Автор:</b> {{ foto.user }}</p>
+        {% if user.is_authenticated %}
         <p><a href="{% url 'webapp:foto_update' foto.pk %}" class="btn btn-primary">Изменить</a></p>
         <p><a href="{% url 'webapp:foto_delete' foto.pk %}" class="btn btn-danger">Удалить</a></p>
-    <p onclick="getClicks({{ foto.pk }})" class="btn btn-danger">Поставить лайк</p>
+    <p onclick="getClicks({{ foto.pk }})" class="btn btn-success">Поставить лайк</p>
         <a class="btn btn-dark" href="#" id="create_link" data-toggle="modal" data-target="#form_modal">Добавить Комментарий</a>
         <p onclick="getComment({{ foto.pk }})" class="btn btn-danger">Добавить Коммент</p>
+        {% endif %}
 {#    <p id="create_link" class="btn btn-dark" data-target="#form_modal">Добавить Комментарий</p>#}
     </div>
        <p><h2>Комментарии:</h2> <b>
        {% for comment in comments %}
            <p> Автор: {{ comment.author }}</p>
            <p> Текст: {{ comment.text }}</p>
+           <p onclick="deleteComment({{ comment.pk }})" class="btn btn-danger">Удалить</p>
            <hr>
 
         {% endfor %}
@@ -42,13 +45,13 @@
             <div class="modal-body">
 <form id="quote_form" class="d-none">
                     <div class="form-group">
-                        <input class="form-control" type="text" name="text" id="text" placeholder="Комментарий к фото">
+                        <input class="form-control" type="text" name="text" id="text" placeholder="ID фото">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" name="author" id="author" placeholder="Автор">
+                        <input class="form-control" type="text" name="author" id="author" placeholder="Текст">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="email" name="fotocomment" id="fotocomment" placeholder="Текст">
+                        <input class="form-control" type="text" name="fotocomment" id="fotocomment" placeholder="ID Автор">
                     </div>
                 </form>
 
