@@ -110,20 +110,7 @@ function deleteComment(id){
 
 }
 
-// function updateComment(id){
-//     let request =  makeRequest('comments/' + id, 'patch', true);
-//     request.done(function(item)
-//     {
-//         getComment();
-//     }
-//     ).fail(function(response, status, message){
-//         console.log('Коммент не удаляется!');
-//         console.log(response.responseText);
-//     });
-//
-// }
-
-function updateComment(id){
+function updateComment(){
     quoteForm.on('submit', function(event) {
         event.preventDefault();
         console.log('yes');
@@ -134,7 +121,7 @@ function updateComment(id){
         event.preventDefault();
         // logInForm.addClass('d-none');
         quoteForm.removeClass('d-none');
-        formTitle.text('Создать');
+        formTitle.text('Обновить');
         formSubmit.text('Сохранить');
         formSubmit.off('click');
         formSubmit.on('click', function(event) {
@@ -199,8 +186,7 @@ function addQuote(fotocomment, text, author) {
     const credentials = {fotocomment, text, author};
     if (token) {request = makeRequest('comments', 'post', true, credentials);}
     else{request = makeRequest('comments', 'post', false, credentials);}
-    // const credentials = {text, author_name, author_email};
-    // request = makeRequest('quote', 'post', true, credentials);
+
     request.done(function (data) {
         formModal.modal('hide');
         }
@@ -216,6 +202,5 @@ $(document).ready(function() {
     // checkAuth();
     // getClicks();
     getComment();
-    // setUpEditQuote();
 
 });

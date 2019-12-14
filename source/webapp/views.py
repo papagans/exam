@@ -33,6 +33,7 @@ class FotoView(DetailView):
         foto = pk
         comments = Comments.objects.filter(fotocomment=foto)
         context['comments'] = comments
+        context['user'] = self.request.user
         return context
 
 

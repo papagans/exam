@@ -12,24 +12,22 @@
         </div>
         <p><b>Подпись:</b> {{ foto.subscribe }}</p>
         <p><b>Дата:</b> {{ foto.created_at }} </p>
-{#        <p><b>Количество лайков:</b> {{ foto.rating }}</p>#}
+        <p><b>Количество лайков:</b> {{ foto.rating }}</p>
         <div class="container" id="buttons"></div>
         <p><b>Автор:</b> {{ foto.user }}</p>
         {% if user.is_authenticated %}
         <p><a href="{% url 'webapp:foto_update' foto.pk %}" class="btn btn-primary">Изменить</a></p>
         <p><a href="{% url 'webapp:foto_delete' foto.pk %}" class="btn btn-danger">Удалить</a></p>
     <p onclick="getClicks({{ foto.pk }})" class="btn btn-success">Поставить лайк</p>
-{#        <a class="btn btn-dark" href="#" id="create_link" data-toggle="modal" data-target="#form_modal">Добавить Комментарий</a>#}
-        <p onclick="getComment({{ foto.pk }})" id="create_link" class="btn btn-dark" data-toggle="modal" data-target="#form_modal">Добавить Коммент</p>
+        <p onclick="getComment({{ foto.pk }}, {{ user.pk }})" id="create_link" class="btn btn-dark" data-toggle="modal" data-target="#form_modal">Добавить Коммент</p>
         {% endif %}
-{#    <p id="create_link" class="btn btn-dark" data-target="#form_modal">Добавить Комментарий</p>#}
     </div>
        <p><h2>Комментарии:</h2> <b>
        {% for comment in comments %}
            <p> Автор: {{ comment.author }}</p>
            <p> Текст: {{ comment.text }}</p>
            <p onclick="deleteComment({{ comment.pk }})" class="btn btn-danger">Удалить</p>
-           <p onclick="updateComment({{ comment.pk }})" id="update_link" data-toggle="modal" data-target="#form_modal" class="btn btn-success">Редактировать</p>
+           <p onclick="updateComment({{ fotocomment.pk }})" id="update_link" data-toggle="modal" data-target="#form_modal" class="btn btn-success">Редактировать</p>
            <hr>
 
         {% endfor %}
