@@ -49,6 +49,7 @@ function setUpGlobalVars() {
     updateForm = $('#update_form');
     updateLink = $('#edit_');
     homeLink = $('#home_link');
+    updateLink = $('#update_link');
     createLink = $('#create_link');
     formSubmit = $('#form_submit');
     formTitle = $('#form_title');
@@ -109,17 +110,37 @@ function deleteComment(id){
 
 }
 
+// function updateComment(id){
+//     let request =  makeRequest('comments/' + id, 'patch', true);
+//     request.done(function(item)
+//     {
+//         getComment();
+//     }
+//     ).fail(function(response, status, message){
+//         console.log('Коммент не удаляется!');
+//         console.log(response.responseText);
+//     });
+//
+// }
+
 function updateComment(id){
-    let request =  makeRequest('comments/' + id, 'patch', true);
-    request.done(function(item)
-    {
-        getComment();
-    }
-    ).fail(function(response, status, message){
-        console.log('Коммент не удаляется!');
-        console.log(response.responseText);
+    quoteForm.on('submit', function(event) {
+        event.preventDefault();
+        console.log('yes');
+        addQuote(textInput.val(), authorInput.val(), fotocommentInput.val());
     });
 
+    updateLink.on('click', function(event) {
+        event.preventDefault();
+        // logInForm.addClass('d-none');
+        quoteForm.removeClass('d-none');
+        formTitle.text('Создать');
+        formSubmit.text('Сохранить');
+        formSubmit.off('click');
+        formSubmit.on('click', function(event) {
+            quoteForm.submit()
+        });
+    });
 }
 
 function getClicks(id){
@@ -161,7 +182,7 @@ function getComment(item){
 
     createLink.on('click', function(event) {
         event.preventDefault();
-        logInForm.addClass('d-none');
+        // logInForm.addClass('d-none');
         quoteForm.removeClass('d-none');
         formTitle.text('Создать');
         formSubmit.text('Сохранить');
