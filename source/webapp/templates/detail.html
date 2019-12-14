@@ -29,6 +29,7 @@
            <p> Автор: {{ comment.author }}</p>
            <p> Текст: {{ comment.text }}</p>
            <p onclick="deleteComment({{ comment.pk }})" class="btn btn-danger">Удалить</p>
+           <p onclick="updateComment({{ comment.pk }})" class="btn btn-success">Редактировать</p>
            <hr>
 
         {% endfor %}

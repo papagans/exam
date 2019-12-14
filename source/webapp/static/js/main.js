@@ -40,25 +40,20 @@ function makeRequest(path, method, auth=true, data=null) {
     return $.ajax(settings);
 }
 
-let logInForm, quoteForm, homeLink, enterLink, exitLink, formSubmit, formTitle, buttons, formModal,
-    usernameInput, passwordInput, authorInput, textInput,createLink, updateLink, ratingUpdate,
+let quoteForm, homeLink, formSubmit, formTitle, buttons, formModal,
+    authorInput, textInput,createLink, updateLink, ratingUpdate,
     textUpdate, updateForm, quoteEditForm, fotocommentInput;
 
 function setUpGlobalVars() {
-    logInForm = $('#log_in_form');
     quoteForm = $('#quote_form');
     updateForm = $('#update_form');
     updateLink = $('#edit_');
     homeLink = $('#home_link');
-    enterLink = $('#enter_link');
     createLink = $('#create_link');
-    exitLink = $('#exit_link');
     formSubmit = $('#form_submit');
     formTitle = $('#form_title');
     buttons = $('#buttons');
     formModal = $('#form_modal');
-    usernameInput = $('#username_input');
-    passwordInput = $('#password_input');
     authorInput = $('#author');
     textInput = $('#text');
     textUpdate = $('#text_update');
@@ -103,6 +98,19 @@ function rateDown(id) {
 
 function deleteComment(id){
     let request =  makeRequest('comments/' + id, 'delete', true);
+    request.done(function(item)
+    {
+        getComment();
+    }
+    ).fail(function(response, status, message){
+        console.log('Коммент не удаляется!');
+        console.log(response.responseText);
+    });
+
+}
+
+function updateComment(id){
+    let request =  makeRequest('comments/' + id, 'patch', true);
     request.done(function(item)
     {
         getComment();
