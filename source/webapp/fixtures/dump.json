@@ -1,0 +1,116 @@
+[
+{
+  "model": "webapp.foto",
+  "pk": 5,
+  "fields": {
+    "foto": "user_pics/77FA435B-A4D9-45D4-A676-234CFE183288.jpg",
+    "subscribe": "\u0412\u043a\u0443\u0441\u043d\u044f\u0448\u043a\u0430",
+    "created_at": "2019-12-14T07:48:15.797Z",
+    "rating": 40,
+    "user": 1
+  }
+},
+{
+  "model": "webapp.foto",
+  "pk": 6,
+  "fields": {
+    "foto": "user_pics/B9DA9942-F50C-4212-B180-825B9012A2C0.jpg",
+    "subscribe": "\u043c\u0430\u043b\u043e \u043f\u0438\u0432\u0430",
+    "created_at": "2019-12-14T08:06:00.196Z",
+    "rating": 0,
+    "user": 1
+  }
+},
+{
+  "model": "webapp.foto",
+  "pk": 7,
+  "fields": {
+    "foto": "user_pics/13062062_223068774728855_8925203447535929400_n_Kb9mJwr.jpg",
+    "subscribe": "\u044f \u0432 \u041c\u043e\u0441\u043a\u0432\u0435!!!",
+    "created_at": "2019-12-14T08:21:56.406Z",
+    "rating": 0,
+    "user": 1
+  }
+},
+{
+  "model": "webapp.foto",
+  "pk": 8,
+  "fields": {
+    "foto": "user_pics/main_u4aq2ZF.jpg",
+    "subscribe": "\u041b\u0410\u0414\u0410 \u0421\u0415\u0414\u0410\u0410\u0410\u041d",
+    "created_at": "2019-12-14T09:17:22.953Z",
+    "rating": 0,
+    "user": 1
+  }
+},
+{
+  "model": "webapp.comments",
+  "pk": 4,
+  "fields": {
+    "text": "\u0410\u041b\u041a\u041e\u0422\u0410!!!",
+    "fotocomment": 5,
+    "author": 1,
+    "created_at": "2019-12-14T09:03:00.703Z"
+  }
+},
+{
+  "model": "webapp.comments",
+  "pk": 5,
+  "fields": {
+    "text": "\u0425\u0412\u0410\u0422\u0418\u0422 \u041f\u0418\u0422\u042c!",
+    "fotocomment": 5,
+    "author": 1,
+    "created_at": "2019-12-14T09:04:04.865Z"
+  }
+},
+{
+  "model": "webapp.comments",
+  "pk": 6,
+  "fields": {
+    "text": "\u041f\u0418\u0412\u0410 \u043c\u043d\u043e\u0433\u043e \u043d\u0435 \u0431\u044b\u0432\u0430\u0435\u0442!",
+    "fotocomment": 6,
+    "author": 1,
+    "created_at": "2019-12-14T09:05:05.666Z"
+  }
+},
+{
+  "model": "webapp.comments",
+  "pk": 7,
+  "fields": {
+    "text": "1",
+    "fotocomment": 5,
+    "author": 1,
+    "created_at": "2019-12-14T13:27:38.465Z"
+  }
+},
+{
+  "model": "webapp.comments",
+  "pk": 8,
+  "fields": {
+    "text": "dedede",
+    "fotocomment": 5,
+    "author": 1,
+    "created_at": "2019-12-14T13:28:32.847Z"
+  }
+},
+{
+  "model": "webapp.comments",
+  "pk": 9,
+  "fields": {
+    "text": "1",
+    "fotocomment": 5,
+    "author": 1,
+    "created_at": "2019-12-14T13:28:42.527Z"
+  }
+},
+{
+  "model": "webapp.comments",
+  "pk": 10,
+  "fields": {
+    "text": "ded",
+    "fotocomment": 5,
+    "author": 1,
+    "created_at": "2019-12-14T13:30:34.362Z"
+  }
+}
+]

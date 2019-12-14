@@ -20,9 +20,8 @@
                         <p class="card-text">Автор: {{ foto.user }} </p>
                         <p class="card-text">Создана: {{ foto.created_at }} </p>
                         <p class="card-text">Рэйтинг: {{ foto.rating }} </p>
-                        <a href="{% url "webapp:foto_detail" foto.pk %}"
-                           class="btn btn-primary">Посмотреть</a>
-{#                        <a href="{% url 'webapp:basket_change' %}?pk={{ product.pk }}&action=add" class="btn btn-primary mt-2">В корзину</a>#}
+                        <a href="{% url "webapp:foto_detail" foto.pk %}" class="btn btn-primary">Посмотреть</a>
+
                     </div>
                 </div>
             </div>

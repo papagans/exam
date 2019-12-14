@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'api_v1',
     'webapp',
 ]
 
@@ -123,3 +126,12 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/user_pics/'
 MEDIA_ROOT = 'user_pics'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    # 'DEFAULT_RENDERER_CLASSES': (
+    #     'rest_framework.renderers.JSONRenderer',
+    # )
+}

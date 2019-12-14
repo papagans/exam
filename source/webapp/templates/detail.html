@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+{% csrf_token %}
 {% block title %}{{ product.name }}{% endblock %}
 {% block content %}
     <div class="text-center">
@@ -10,18 +12,56 @@
         </div>
         <p><b>Подпись:</b> {{ foto.subscribe }}</p>
         <p><b>Дата:</b> {{ foto.created_at }} </p>
-        <p><b>Количество лайков:</b> {{ foto.rating }}</p>
+{#        <p><b>Количество лайков:</b> {{ foto.rating }}</p>#}
+        <div class="container" id="buttons"></div>
         <p><b>Автор:</b> {{ foto.user }}</p>
-{#        <p><a href="{% url 'webapp:basket_change' %}?pk={{ product.pk }}&action=add&next={% url "webapp:product_detail" product.pk %}" class="btn btn-primary">В корзину</a></p>#}
         <p><a href="{% url 'webapp:foto_update' foto.pk %}" class="btn btn-primary">Изменить</a></p>
         <p><a href="{% url 'webapp:foto_delete' foto.pk %}" class="btn btn-danger">Удалить</a></p>
+    <p onclick="getClicks({{ foto.pk }})" class="btn btn-danger">Поставить лайк</p>
+        <a class="btn btn-dark" href="#" id="create_link" data-toggle="modal" data-target="#form_modal">Добавить Комментарий</a>
+        <p onclick="getComment({{ foto.pk }})" class="btn btn-danger">Добавить Коммент</p>
+{#    <p id="create_link" class="btn btn-dark" data-target="#form_modal">Добавить Комментарий</p>#}
     </div>
        <p><h2>Комментарии:</h2> <b>
        {% for comment in comments %}
            <p> Автор: {{ comment.author }}</p>
-           <p> Автор: {{ comment.text }}</p>
+           <p> Текст: {{ comment.text }}</p>
            <hr>
 
-{#           (Time joined: {{ team.created_at }}) (Time end: {{ team.end_at }})<br/></p>#}
         {% endfor %}
+<div class="modal fade" id="form_modal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="form_title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+<form id="quote_form" class="d-none">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="text" id="text" placeholder="Комментарий к фото">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="author" id="author" placeholder="Автор">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="email" name="fotocomment" id="fotocomment" placeholder="Текст">
+                    </div>
+                </form>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary mr-auto" id="form_submit"></button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            </div></div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script type="application/javascript" src="{% static "js/main.js" %}"></script>
 {% endblock %}
